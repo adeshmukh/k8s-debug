@@ -1,0 +1,18 @@
+# Ref: https://docs.github.com/en/actions/publishing-packages/publishing-docker-images#publishing-images-to-docker-hub
+name: Build Docker image
+
+on: [push]
+
+jobs:
+  build_docker_image:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        uses: docker/build-push-action@7f9d37fa544684fb73bfe4835ed7214c255ce02b
+        with:
+          context: .
+          push: false
